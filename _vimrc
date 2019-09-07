@@ -307,12 +307,14 @@ else
     set guifont=Monaco\ 11
 endif
 
+let mapleader = ","
+let g:mapleader = ","
 
 set backspace=2              " 设置退格键可用
 set autoindent               " 自动对齐
 set ai!                      " 设置自动缩进
 set smartindent              " 智能自动缩进
-set relativenumber           " 开启相对行号
+" set relativenumber           " 开启相对行号
 set nu!                      " 显示行号
 set ruler                    " 右下角显示光标位置的状态行
 set incsearch                " 开启实时搜索功能
@@ -324,14 +326,14 @@ set autochdir                " 设定文件浏览器目录为当前目录
 set foldmethod=indent        " 选择代码折叠类型
 set foldlevel=100            " 禁止自动折叠
 set laststatus=2             " 开启状态栏信息
-set cmdheight=2              " 命令行的高度，默认为1，这里设为2
+set cmdheight=1              " 命令行的高度，默认为1，这里设为2
 set autoread                 " 当文件在外部被修改时自动更新该文件
 set nobackup                 " 不生成备份文件
 set noswapfile               " 不生成交换文件
 set list                     " 显示特殊字符，其中Tab使用高亮~代替，尾部空白使用高亮点号代替
 set listchars=tab:\~\ ,trail:.
 set expandtab                " 将 Tab 自动转化成空格 [需要输入真正的 Tab 符时，使用 Ctrl+V + Tab]
-"set showmatch               " 显示括号配对情况
+set showmatch                " 显示括号配对情况
 
 " 使用 vimdiff 时，长行自动换行
 autocmd FilterWritePre * if &diff | setlocal wrap< | endif
@@ -377,6 +379,7 @@ endif
 
 
 " 加载 pathogen 插件管理器
+let g:pathogen_disabled = ['syntastic', 'vimwiki']
 execute pathogen#infect()
 execute pathogen#helptags()
 
@@ -754,7 +757,7 @@ let g:gitgutter_sign_removed          = '-'    " 自定义删除指示符
 let g:gitgutter_sign_modified_removed = '->'   " 自定义既修改又删除指示符
 
 " Syntastic           语法检查
-let g:syntastic_check_on_open = 1              " 默认开启
+let g:syntastic_check_on_open = 0              " 默认不开启
 let g:syntastic_mode_map      = { 'mode': 'active', 'passive_filetypes': ['html', 'xhtml'] }
 " 自定义编译器和编译参数
 if g:isWIN
